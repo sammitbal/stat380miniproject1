@@ -16,6 +16,10 @@ COD_dataset <- read_excel("./CODGames2_mp.xlsx")
 ```
 
 ## Introduction to the Dataset
+**Notes for Our Group:**
+
+1. Each row represents a game
+2. We're interested in the variables "PrimaryWeapon", "Score"
 
 **Description:**
 
