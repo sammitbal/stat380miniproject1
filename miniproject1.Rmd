@@ -28,7 +28,7 @@ COD_dataset <- read_excel("./CODGames2_mp.xlsx")
 - Match points are awarded to the team who won the best of five game series. 
 - Game points are awarded to the winning team at the conclusion of each game.
 
-## Variable 1 (Example)
+## Variable 1 (PrimaryWeapon)
 For the first variable, we selected the quantitative variable Score of the numeric type, which ranges in values from
 0 to around 8000. There are no missing observations for the Score variable.
 
@@ -57,3 +57,127 @@ ggplot(data = COD_dataset,
 **Analysis:**
 
 Based on this analysis, the scores ranged from 100 to around 7300, with a majority of values falling between 1500 and 4000. The distribution of Score is slightly right skewed with a mean of Score 2,945 and a median of 2,770. The histogram does suggest a few matches in which the player performed at a high level and scored more than
+
+
+## Variable 2 (Score)
+For the first variable, we selected the quantitative variable Score of the numeric type, which ranges in values from
+0 to around 8000. There are no missing observations for the Score variable.
+
+```{r}
+# Summary statistics for Score variable
+COD_dataset %>%
+  dplyr::select(Score) %>%
+  summarize(min = min(Score),
+  max = max(Score),
+  mean = mean(Score),
+  median = median(Score),
+  sd = sd(Score))
+```
+
+**Visualization:**
+
+```{r}
+# Histogram of Score variable values to show distribution
+ggplot(data = COD_dataset,
+  mapping = aes(x = Score)) +
+  geom_histogram(binwidth = 500, fill = "blue", color = "black") +
+  labs(y = "Number of Matches",
+  title = "Histogram of COD Scores")
+```
+
+**Analysis:**
+
+Based on this analysis, the scores ranged from 100 to around 7300, with a majority of values falling between 1500 and 4000. The distribution of Score is slightly right skewed with a mean of Score 2,945 and a median of 2,770. The histogram does suggest a few matches in which the player performed at a high level and scored more than
+
+## Variable 3 (Choice)
+For the first variable, we selected the quantitative variable Score of the numeric type, which ranges in values from
+0 to around 8000. There are no missing observations for the Score variable.
+
+```{r}
+# Summary statistics for Score variable
+COD_dataset %>%
+  dplyr::select(Score) %>%
+  summarize(min = min(Score),
+  max = max(Score),
+  mean = mean(Score),
+  median = median(Score),
+  sd = sd(Score))
+```
+
+**Visualization:**
+
+```{r}
+# Histogram of Score variable values to show distribution
+ggplot(data = COD_dataset,
+  mapping = aes(x = Score)) +
+  geom_histogram(binwidth = 500, fill = "blue", color = "black") +
+  labs(y = "Number of Matches",
+  title = "Histogram of COD Scores")
+```
+
+**Analysis:**
+
+Based on this analysis, the scores ranged from 100 to around 7300, with a majority of values falling between 1500 and 4000. The distribution of Score is slightly right skewed with a mean of Score 2,945 and a median of 2,770. The histogram does suggest a few matches in which the player performed at a high level and scored more than
+
+## Variable 4 (Eliminations)
+For the first variable, we selected the quantitative variable Score of the numeric type, which ranges in values from
+0 to around 8000. There are no missing observations for the Score variable.
+
+```{r}
+# Summary statistics for Score variable
+COD_dataset %>%
+  dplyr::select(Score) %>%
+  summarize(min = min(Score),
+  max = max(Score),
+  mean = mean(Score),
+  median = median(Score),
+  sd = sd(Score))
+```
+
+**Visualization:**
+
+```{r}
+# Histogram of Score variable values to show distribution
+ggplot(data = COD_dataset,
+  mapping = aes(x = Score)) +
+  geom_histogram(binwidth = 500, fill = "blue", color = "black") +
+  labs(y = "Number of Matches",
+  title = "Histogram of COD Scores")
+```
+
+**Analysis:**
+
+Based on this analysis, the scores ranged from 100 to around 7300, with a majority of values falling between 1500 and 4000. The distribution of Score is slightly right skewed with a mean of Score 2,945 and a median of 2,770. The histogram does suggest a few matches in which the player performed at a high level and scored more than
+
+
+## Variable 5 (TotalXP)
+For the first variable, we selected the quantitative variable Score of the numeric type, which ranges in values from
+0 to around 8000. There are no missing observations for the Score variable.
+
+```{r}
+# Summary statistics for Score variable
+COD_dataset %>%
+  dplyr::select(Score) %>%
+  summarize(min = min(Score),
+  max = max(Score),
+  mean = mean(Score),
+  median = median(Score),
+  sd = sd(Score))
+```
+
+**Visualization:**
+
+```{r}
+# Histogram of Score variable values to show distribution
+ggplot(data = COD_dataset,
+  mapping = aes(x = Score)) +
+  geom_histogram(binwidth = 500, fill = "blue", color = "black") +
+  labs(y = "Number of Matches",
+  title = "Histogram of COD Scores")
+```
+
+**Analysis:**
+
+Based on this analysis, the scores ranged from 100 to around 7300, with a majority of values falling between 1500 and 4000. The distribution of Score is slightly right skewed with a mean of Score 2,945 and a median of 2,770. The histogram does suggest a few matches in which the player performed at a high level and scored more than
+
+
