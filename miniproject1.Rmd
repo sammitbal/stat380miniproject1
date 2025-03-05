@@ -10,9 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Front Matter
-
+  
 ```{r}
-COD_dataset <- read.csv(...)
+COD_dataset <- read_excel("./CODGames2_mp.xlsx")
 ```
 
 ## Introduction to the Dataset
