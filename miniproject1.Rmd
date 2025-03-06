@@ -26,7 +26,7 @@ library(knitr)
 
 ```{r}
 COD_dataset <- read_excel("./CODGames2_mp.xlsx")
-view(COD_dataset)
+
 ```
 
 ## Introduction to the Dataset
