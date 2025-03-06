@@ -31,6 +31,20 @@ view(COD_dataset)
 
 ## Introduction to the Dataset
 
+The dataset “COD Games” refers to the video game Call of Duty. The dataset contains 27 variables, including “Map 1”, “Map 2”, “Choice”, “Map Vote”, “Date”, and “Full Partial”.
+
+```{r}
+head(COD_dataset)
+```
+
+Each row represents one game of COD, though what a “game” entails— be it the Result or statistics— seems to vary case by case. In total, there are 211 games:
+
+```{r}
+nrow(COD_dataset)
+```
+
+Overall, there are several times that “Map1”, “Map2”, and “MapVote” are not recorded— instead left as NA— but, for the most part, the NAs are prevalent in the variables “Confirms”, “Denies”, “Objectives”, and the rest of the variables to the right.
+
 **Notes for Our Group:**
 
 1.  Each row represents a game
@@ -40,43 +54,66 @@ view(COD_dataset)
 
 ## Variable 1 (PrimaryWeapon)
 
-For the first variable, we selected the quantitative variable Score of
-the numeric type, which ranges in values from 0 to around 8000. There
-are no missing observations for the Score variable.
+We were curious about the variable “PrimaryWeapon”, which seems to refer to the most common weapon selected for a round. Based on the dataset, there are 9 different types of weapons:
 
 ```{r}
-# Summary statistics for Score variable
+# Table of types of PrimaryWeapon
 COD_dataset %>%
-  dplyr::select(Score) %>%
-  summarize(min = min(Score),
-  max = max(Score),
-  mean = mean(Score),
-  median = median(Score),
-  sd = sd(Score))
+  dplyr::select(PrimaryWeapon) %>%
+  distinct()
+```
+
+The statistics collected from the rounds recorded contained no NA values for PrimaryWeapon:
+
+```{r}
+# Filter: Find the number of NA values in PrimaryWeapon
+COD_dataset %>%
+  filter(is.na(PrimaryWeapon)) %>%
+  summarize(Number_of_NA = n())
 ```
 
 **Visualization:**
 
 ```{r}
-# Histogram of Score variable values to show distribution
-ggplot(data = COD_dataset,
-  mapping = aes(x = Score)) +
-  geom_histogram(binwidth = 500, fill = "blue", color = "black") +
-  labs(y = "Number of Matches",
-  title = "Histogram of COD Scores")
+# Aggregate of Primary Weapon counts per unique Primary Weapon
+COD_PW_df <- COD_dataset %>%
+  select(PrimaryWeapon) %>%
+  group_by(PrimaryWeapon) %>%
+  summarize(N = n())
+
+# Boxplot visualization of Primary Weapon counts
+ggplot(data = COD_PW_df,
+       mapping = aes(x = PrimaryWeapon, y = N)) +
+  geom_bar(stat = "identity", fill = "blue", 
+           linewidth = 1, colour = "black") +
+  labs(y = "Frequency of Primary Weapon Selection",
+       title = "Boxplot of COD Primary Weapons")
 ```
+
 
 **Analysis:**
 
-Based on this analysis, the scores ranged from 100 to around 7300, with
-a majority of values falling between 1500 and 4000. The distribution of
-Score is slightly right skewed with a mean of Score 2,945 and a median
-of 2,770. The histogram does suggest a few matches in which the player
-performed at a high level and scored more than
+Based on this analysis, the frequency of weapon selections ranges from the MG 82 which is selected only twice, to the M16 which is selected 48 times, for a total of 211 games’ worth of Primary Weapons data.
+
+- Most weapons— 5 out of 9, to be exact— are selected more than twenty times: the Kric 6 21 times, the QBZ-83 37 times, the Pelington 703 38 times, the MP5 45 times, and the M16 48 times.
+- There are four weapons selected less than twenty times: the Type 63 only 13 times, the AK-47 4 times, the FFAR 1 3 times, and the MG 82 2 times.
+
+Between the categories, there is a wide gulf between the frequently-used weapons and infrequently-used ones. Almost all of the frequently-used weapons are used above 35 times, and almost all of the less-frequently-used weapons are used below 5 times.
+
+This suggests the existance of a “META” (Most Effective Tactic Available) between COD weapons, where some weapons which are (most likely due to their being statistically less effective) broadly ignored by a player base, while other weapons are commonly selected.
 
 ## Variable 2 (Score)
 
-For the second variable, we selected Score a quantitative variable. This variable contains numeric data, which ranges in values from 100 to 7315. There are no missing observations for the Score variable.
+For the second variable, we selected Score a quantitative variable. This variable contains numeric data, which ranges in values from 100 to 7315.
+
+There are no missing observations for the Score variable.
+
+```{r}
+# Filter: Find the number of NA values in Score
+COD_dataset %>%
+  filter(is.na(Score)) %>%
+  summarize(Number_of_NA = n())
+```
 
 
 ```{r}
