@@ -76,19 +76,18 @@ performed at a high level and scored more than
 
 ## Variable 2 (Score)
 
-For the first variable, we selected the quantitative variable Score of
-the numeric type, which ranges in values from 0 to around 8000. There
-are no missing observations for the Score variable.
+For the second variable, we selected Score a quantitative variable. This variable contains numeric data, which ranges in values from 100 to 7315. There are no missing observations for the Score variable.
+
 
 ```{r}
 # Summary statistics for Score variable
 COD_dataset %>%
-  dplyr::select(Score) %>%
+  select(Score) %>%
   summarize(min = min(Score),
-  max = max(Score),
-  mean = mean(Score),
-  median = median(Score),
-  sd = sd(Score))
+    max = max(Score),
+    mean = mean(Score),
+    median = median(Score),
+    sd = sd(Score))
 ```
 
 **Visualization:**
@@ -97,18 +96,17 @@ COD_dataset %>%
 # Histogram of Score variable values to show distribution
 ggplot(data = COD_dataset,
   mapping = aes(x = Score)) +
-  geom_histogram(binwidth = 500, fill = "blue", color = "black") +
+  geom_histogram(binwidth = 400, fill = "red", color = "black") +
   labs(y = "Number of Matches",
   title = "Histogram of COD Scores")
 ```
 
 **Analysis:**
 
-Based on this analysis, the scores ranged from 100 to around 7300, with
-a majority of values falling between 1500 and 4000. The distribution of
-Score is slightly right skewed with a mean of Score 2,945 and a median
-of 2,770. The histogram does suggest a few matches in which the player
-performed at a high level and scored more than
+Based on the visualization, we can see that the scores at the bottom end were 100 and at the top about 7300. 
+The majority of scores were between 1500 and 4000. The shape of the distribution is unimodal with a 
+right skew. The mean Score is 2,944 and the median is
+2,770. On average the player had a score between 2000 and 4000, but in the right tail we see that the player occasionally managed to score above 6000.
 
 ## Variable 3 (Choice)
 
