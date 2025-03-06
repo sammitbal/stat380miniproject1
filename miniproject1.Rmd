@@ -288,6 +288,36 @@ performed at a high level.
 5. Based on the plot, answer the question.
 6. If you have knowledge about these types of games, you can also mention other variables that could affect TotalXP but were not included in the question.
 
+```{r}
+# Creating new "Month" variable
+new_COD_ds <- COD_dataset %>%
+  mutate(Month = month(ymd(Date), label=TRUE, abbr=FALSE))
+
+# Table of distributions of 
+new_COD_ds %>%
+  group_by(Month) %>%
+  summarize(min = min(TotalXP),
+            q1 = quantile(TotalXP, probs = 0.25),
+            median = median(TotalXP),
+            q3 = quantile(TotalXP, probs = 0.75),
+            max = max(TotalXP))
+
+# Side-by-side boxplots of TotalXP, divided by Month
+ggplot(data = new_COD_ds, mapping = aes(x = Month, y = TotalXP)) + 
+  geom_boxplot()
+```
+
+**Analysis:** 
+The visualization suggests that there is not a strong correlation between the amount of XP gained (TotalXP) and the time of year they are playing. The averages in TotalXP do not vary by much, only by approximately 10% with July's median TotalXP being 9,872 compared to June's 11,078 TotalXP. The first and third quartiles of these variations are also within 1,000 XP of difference, with the third quartile specifically varying by less than 200 between months. Neither of these discrepancies are substantial enough to reject the (default) assumption that time of year affects the amount of XP gained. 
+
+However, it is worth nothing that:
+
+1. June's median TotalXP outstrips either of the other months, being 1,206XP and 936XP greater than July and August's median TotalXP respectively. 
+
+2. July's interquartile range (IQR) is slightly wider: specifically, its first quartile is roughly 1,000XP lower than June and August's. 
+
+These differences suggest that, while not strong, TotalXP *does* vary between months of the year, which might affect, and therefore be worth considering, for those COD players who play at the highest level of the game. 
+
 ##### **Part 2:** You will write your own question, create a data visualization that can help answer your question, and write an answer to your question.
 
 1. The question/visualization should explore the relationship between at
