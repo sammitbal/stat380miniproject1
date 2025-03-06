@@ -373,8 +373,7 @@ library(readxl)</code></pre>
 <pre><code>## Warning: package &#39;readxl&#39; was built under R version 4.4.2</code></pre>
 <pre class="r"><code>library(knitr)</code></pre>
 <p>##1 Read the dataset into R</p>
-<pre class="r"><code>COD_dataset &lt;- read_excel(&quot;./CODGames2_mp.xlsx&quot;)
-view(COD_dataset)</code></pre>
+<pre class="r"><code>COD_dataset &lt;- read_excel(&quot;./CODGames2_mp.xlsx&quot;)</code></pre>
 </div>
 <div id="introduction-to-the-dataset" class="section level2">
 <h2>Introduction to the Dataset</h2>
@@ -773,27 +772,37 @@ players score?</p></li>
 <div id="asking-a-question-that-can-be-answered-using-the-dataset-and-data-visualization." class="section level3">
 <h3>4. Asking a question that can be answered using the dataset and data
 visualization.</h3>
-<p>Part 1 – You will answer my question: Is the player’s performance, as
-quantified by the amount of experience points gained (TotalXP variable)
-changing over time? To answer this, you should find a way to extract the
-month from the Date variable (we have not covered working with dates in
-STAT 380) o The lubridate package (part of tidyverse) is useful for
-working with dates o Once you have the months, create side-by-side
-boxplots showing the TotalXP based on the Month, where the months are
-named (i.e., month should be June, not the number 6). The months should
-be in chronological order, not alphabetical order o Based on the plot,
-answer the question. If you have knowledge about these types of games,
-you can also mention other variables that could affect TotalXP but were
-not included in the question.</p>
+<div id="part-1-you-will-answer-my-question-is-the-players-performance-as-quantified-by-the-amount-of-experience-points-gained-totalxp-variable-changing-over-time" class="section level5">
+<h5><strong>Part 1:</strong> You will answer my question: Is the
+player’s performance, as quantified by the amount of experience points
+gained (TotalXP variable) changing over time?</h5>
+<ol style="list-style-type: decimal">
+<li>To answer this, you should find a way to extract the month from the
+Date variable (we have not covered working with dates in STAT 380)</li>
+<li>The lubridate package (part of tidyverse) is useful for working with
+dates</li>
+<li>Once you have the months, create side-by-side boxplots showing the
+TotalXP based on the Month, where the months are named (i.e., month
+should be June, not the number 6).</li>
+<li>The months should be in chronological order, not alphabetical
+order</li>
+<li>Based on the plot, answer the question.</li>
+<li>If you have knowledge about these types of games, you can also
+mention other variables that could affect TotalXP but were not included
+in the question.</li>
+</ol>
 </div>
-<div id="part-2-you-will-write-your-own-question-create-a-data-visualization-that-can-help-answer-your-question-and-write-an-answer-to-your-question." class="section level3">
-<h3>Part 2 – You will write your own question, create a data
-visualization that can help answer your question, and write an answer to
-your question.</h3>
-<p>The question/visualization should explore the relationship between at
-least 2 of the variables in the dataset. Be sure you include both the
-question and the answer to your question based on the visualization you
-have created.</p>
+<div id="part-2-you-will-write-your-own-question-create-a-data-visualization-that-can-help-answer-your-question-and-write-an-answer-to-your-question." class="section level5">
+<h5><strong>Part 2:</strong> You will write your own question, create a
+data visualization that can help answer your question, and write an
+answer to your question.</h5>
+<ol style="list-style-type: decimal">
+<li>The question/visualization should explore the relationship between
+at least 2 of the variables in the dataset.</li>
+<li>Be sure you include both the question and the answer to your
+question based on the visualization you have created.</li>
+</ol>
+</div>
 </div>
 </div>
 

@@ -281,22 +281,16 @@ performed at a high level and scored more than
 
 ### 4. Asking a question that can be answered using the dataset and data visualization.
 
-Part 1 – You will answer my question: Is the player’s performance, as
-quantified by the amount of experience points gained (TotalXP variable)
-changing over time? To answer this, you should find a way to extract the
-month from the Date variable (we have not covered working with dates in
-STAT 380) o The lubridate package (part of tidyverse) is useful for
-working with dates o Once you have the months, create side-by-side
-boxplots showing the TotalXP based on the Month, where the months are
-named (i.e., month should be June, not the number 6). The months should
-be in chronological order, not alphabetical order o Based on the plot,
-answer the question. If you have knowledge about these types of games,
-you can also mention other variables that could affect TotalXP but were
-not included in the question.
+##### **Part 1:** You will answer my question: Is the player’s performance, as quantified by the amount of experience points gained (TotalXP variable) changing over time? 
+1. To answer this, you should find a way to extract the month from the Date variable (we have not covered working with dates in STAT 380) 
+2. The lubridate package (part of tidyverse) is useful for working with dates
+3. Once you have the months, create side-by-side boxplots showing the TotalXP based on the Month, where the months are named (i.e., month should be June, not the number 6). 
+4. The months should be in chronological order, not alphabetical order
+5. Based on the plot, answer the question.
+6. If you have knowledge about these types of games, you can also mention other variables that could affect TotalXP but were not included in the question.
 
-### Part 2 – You will write your own question, create a data visualization that can help answer your question, and write an answer to your question.
+##### **Part 2:** You will write your own question, create a data visualization that can help answer your question, and write an answer to your question.
 
-The question/visualization should explore the relationship between at
-least 2 of the variables in the dataset. Be sure you include both the
-question and the answer to your question based on the visualization you
-have created.
+1. The question/visualization should explore the relationship between at
+least 2 of the variables in the dataset. 
+2. Be sure you include both the question and the answer to your question based on the visualization you have created.
