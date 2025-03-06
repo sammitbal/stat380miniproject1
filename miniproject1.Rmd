@@ -1,10 +1,10 @@
 ---
-title: "miniproject1"
+title: "Stat 380: MiniProject 1"
 author: "Sammit Bal, Thaddeus Poff, Jason Zhang"
-date: "2025-03-05"
-output: html_document
-editor_options: 
-  markdown: 
+output:
+  html_document: default
+editor_options:
+  markdown:
     wrap: 72
 ---
 
@@ -14,10 +14,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Front Matter
 
+```{r}
+library(tidyverse)
+library(lubridate)
+library(readxl)
+
+```
+
+
 ##1 Read the dataset into R
 
 ```{r}
 COD_dataset <- read_excel("./CODGames2_mp.xlsx")
+view(COD_dataset)
 ```
 
 ## Introduction to the Dataset
@@ -203,30 +212,26 @@ ggplot(data = COD_dataset,
 
 **Analysis:**
 
+
 Based on this analysis, the scores ranged from 100 to around 7300, with
 a majority of values falling between 1500 and 4000. The distribution of
 Score is slightly right skewed with a mean of Score 2,945 and a median
 of 2,770. The histogram does suggest a few matches in which the player
 performed at a high level and scored more than
 
-## 3. Begin a list of questions that you have about the dataset. Suppose you are working on a project and your manager gives you this dataset. Write 3 questions that you would ask your manager.
 
-1.  
+### 3. Begin a list of questions that you have about the dataset. Suppose you are working on a project and your manager gives you this dataset. Write 3 questions that you would ask your manager.
 
-2.  
 
-3.  
+1. How is TotalXP calculated and what actions earn you XP?
 
-• You have not been given any information about what the variables
-represent. So, if you are unsure about the meaning of any of the
-variables, write your questions. • You have not been given any
-information about how the data were collected. If you have questions
-about the data collection, write them down. • If you have any other
-questions, write them down. • NOTE: Even if you are familiar with the
-game and think that you understand the meaning of the variables, you are
-still expected to write 3 potential questions that you could ask.
+2. How is score calculated and what actions increase or decrease a players score?
 
-## 4. Asking a question that can be answered using the dataset and data visualization.
+3.  Why are there so many NA values in the last 11 columns?
+
+
+
+### 4. Asking a question that can be answered using the dataset and data visualization.
 
 Part 1 – You will answer my question: Is the player’s performance, as
 quantified by the amount of experience points gained (TotalXP variable)
@@ -241,7 +246,7 @@ answer the question. If you have knowledge about these types of games,
 you can also mention other variables that could affect TotalXP but were
 not included in the question.
 
-# Part 2 – You will write your own question, create a data visualization that can help answer your question, and write an answer to your question.
+### Part 2 – You will write your own question, create a data visualization that can help answer your question, and write an answer to your question.
 
 The question/visualization should explore the relationship between at
 least 2 of the variables in the dataset. Be sure you include both the
