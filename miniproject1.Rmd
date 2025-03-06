@@ -270,11 +270,11 @@ performed at a high level.
 ### 3. Begin a list of questions that you have about the dataset. Suppose you are working on a project and your manager gives you this dataset. Write 3 questions that you would ask your manager.
 
 
-1. How is TotalXP calculated and what actions earn you XP?
+1. How is TotalXP calculated (what actions earn you XP)?
 
-2. How is score calculated and what actions increase or decrease a players score?
+2. How is score calculated (what actions increase or decrease a players score)?
 
-3.  Why are there so many NA values in the last 11 columns?
+3.  Why are there so many NA values in the last 11 columns? Why was this data not collected as frequently as the other game statistics?
 
 
 
@@ -304,11 +304,12 @@ new_COD_ds %>%
 
 # Side-by-side boxplots of TotalXP, divided by Month
 ggplot(data = new_COD_ds, mapping = aes(x = Month, y = TotalXP)) + 
-  geom_boxplot()
+  geom_boxplot(fill = "lightgreen") + 
+  labs(title = "Side-by-Side Boxplots Comparing TotalXP and Month")
 ```
 
 **Analysis:** 
-The visualization suggests that there is not a strong correlation between the amount of XP gained (TotalXP) and the time of year they are playing. The averages in TotalXP do not vary by much, only by approximately 10% with July's median TotalXP being 9,872 compared to June's 11,078 TotalXP. The first and third quartiles of these variations are also within 1,000 XP of difference, with the third quartile specifically varying by less than 200 between months. Neither of these discrepancies are substantial enough to reject the (default) assumption that time of year affects the amount of XP gained. 
+The visualization suggests that there is not a strong correlation between the amount of XP gained (TotalXP) and the time of year they are playing. The averages in TotalXP do not vary by much, only by approximately 10% (with July's median TotalXP being 9,872 compared to June's 11,078 TotalXP). The first and third quartiles of these variations are also within 1,000 XP of difference, with the third quartile specifically varying by less than 200 between months. Neither of these discrepancies are substantial enough to reject the (default) assumption that time of year affects the amount of XP gained. 
 
 However, it is worth nothing that:
 
@@ -323,3 +324,57 @@ These differences suggest that, while not strong, TotalXP *does* vary between mo
 1. The question/visualization should explore the relationship between at
 least 2 of the variables in the dataset. 
 2. Be sure you include both the question and the answer to your question based on the visualization you have created.
+
+**New Question:** Is the primary weapon selected related to the number of eliminations? 
+
+```{r}
+# Visualization of PrimaryWeapons and Elimination count
+ggplot(data = COD_dataset, 
+       mapping = aes(x = reorder(PrimaryWeapon, Eliminations, median),
+                     y = Eliminations),
+                     group = PrimaryWeapon) + 
+  geom_boxplot(fill = "lightblue") +
+  geom_point(position = "jitter", color = "purple") + 
+  labs(x = "PrimaryWeapon", 
+       title = "Boxplots Comparing Eliminations to PrimaryWeapon") 
+```
+
+```{r}
+# Visualization of PrimaryWeapons and Elimination count 
+ggplot(data = COD_dataset, 
+       mapping = aes(x = reorder(PrimaryWeapon, Eliminations, median),
+                     y = Eliminations),
+                     group = PrimaryWeapon) + 
+  geom_boxplot(fill = "lightblue") +
+  geom_point(position = "jitter", color = "purple") + 
+  labs(x = "PrimaryWeapon", 
+       title = "Boxplots Comparing Eliminations to PrimaryWeapon") 
+```
+
+Notably, this first visualization contains three weapons which were selected less than 5 times--- the FFAR 1, the MG 82, and AK-47--- which make them outliers which might skew the conclusion regarding average Eliminations based on their medians having the same weight as weapons with a lot of data supporting the median (e.g., the Pelington 703). Therefore, let's create a second visualization discounting those. 
+
+
+```{r}
+# Visualization w/o outlier weapons
+filtered_COD_ds <- COD_dataset %>%
+  filter(!(PrimaryWeapon %in% c("FFAR 1", "MG 82", "AK-47")))
+
+ggplot(data = filtered_COD_ds, 
+       mapping = aes(x = reorder(PrimaryWeapon, Eliminations, median),
+                     y = Eliminations),
+                     group = PrimaryWeapon) + 
+  geom_boxplot(fill = "lightblue") +
+  geom_point(position = "jitter", color = "purple") + 
+  labs(x = "PrimaryWeapon", 
+       title = "Boxplots Comparing Eliminations to PrimaryWeapon (Excluding Outliers)") 
+```
+
+
+**Analysis:** 
+Based on the visualization, there seems to be a significant change in the number of eliminations depending on the Primary Weapon selected. Ignoring those 4 weapons which were selected less than 5 times--- the FFAR 1, the MG 82, and AK-47--- the averages and quartiles both vary substantially between PrimaryWeapons. 
+
+1. Between the PrimaryWeapon with the most eliminations behind it, the Type 63 with 19 eliminations, and the one with the least, the Pelington 703 with 12 eliminations, there is a 7-elimination gap. 
+2. Comparing the Pelington 703 and the second-most elimination Primary Weapon, the QBZ-83 with 15 eliminations, there is a substantial 3-elimination gap (a 25% increase from the Pelington). 
+3. Comparing the second-least Eliminations and second-most Eliminations weapons--- the Krig 6 and the QBZ-83--- is finally where there is only a 7% difference from 14 to 15 eliminations. 
+
+Based on these comparisons, and the visualization, *certain weapons* do not have a difference in average Eliminations, while *other weapons* do have a sizable discrepancy in average eliminations. It is worth noting that, even between these weapons, the lower and upper quartiles also vary substantially, with gulfs of 2-5 Eliminations between weapons whose median eliminations are close. And with all factors accounted for, it is conclusive that the selection of PrimaryWeapon affects the number of Eliminations players see in a game. 
