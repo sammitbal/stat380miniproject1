@@ -195,9 +195,14 @@ Based on this visualization, we can observe that Maps are chosen fall within a f
 
 ## Variable 4 (Eliminations) 
 
-For the first variable, we selected the quantitative variable Score of
-the numeric type, which ranges in values from 0 to around 8000. There
-are no missing observations for the Score variable.
+For the fourth variable, we examined the quantitative variable "Eliminations". There are no `NA` values in TotalXP 
+
+```{r}
+# Filter: Find the number of NA values in Eliminations
+COD_dataset %>%
+    filter(is.na(Eliminations)) %>%
+    summarize(Number_of_NA = n())
+```
 
 ```{r}
 # Summary statistics for Score variable
@@ -223,17 +228,20 @@ ggplot(data = COD_dataset,
 
 **Analysis:**
 
-Based on this analysis, the eliminations ranged from around 2 to around 38, with
-a majority of values falling between 10 and 20. The distribution of
-Eliminations is slightly right skewed with mean Eliminations of 15 and a median
-of 14. The histogram does suggest a few matches in which the player
+Based on this analysis, the eliminations ranged from around 2 to around 38, with a majority of values falling between 10 and 20. The distribution of
+Eliminations is slightly right skewed with mean Eliminations of 15 and a median of 14. The histogram does suggest a few matches in which the player
 performed at a high level. 
 
 ## Variable 5 (TotalXP) 
 
-For the first variable, we selected the quantitative variable Score of
-the numeric type, which ranges in values from 0 to around 8000. There
-are no missing observations for the Score variable.
+For the fifth and last variable, we selected the quantitative variable TotalXP of the numeric type. There are no `NA` values in TotalXP. 
+
+```{r}
+# Filter: Find the number of NA values in TotalXP.
+COD_dataset %>%
+    filter(is.na(TotalXP)) %>%
+    summarize(Number_of_NA = n())
+```
 
 ```{r}
 # Summary statistics for Score variable
@@ -260,7 +268,7 @@ ggplot(data = COD_dataset,
 **Analysis:**
 
 
-Based on this analysis, the TotalXP ranged from 100 to around 45000, with
+Based on this analysis, the TotalXP ranged from 1935 to around 45000, with
 a majority of values falling between 8000 and 12000. The distribution of
 TotalXP is right skewed with a TotalXP mean of 11975 and a median
 of 10328. The histogram does suggest a few matches in which the player
