@@ -22,7 +22,7 @@ library(knitr)
 ```
 
 
-##1 Read the dataset into R
+## Read the dataset into R
 
 ```{r}
 COD_dataset <- read_excel("./CODGames2_mp.xlsx")
@@ -47,8 +47,8 @@ Overall, there are several times that “Map1”, “Map2”, and “MapVote” 
 **Notes for Our Group:**
 
 1.  Each row represents a game
-2.  We're interested in the variables "PrimaryWeapon" (J), "Score" (S),
-    "Choice" (J), "Eliminations" (T), "TotalXP" (T)
+2.  We're interested in the variables "PrimaryWeapon", "Score",
+    "Choice", "Eliminations", "TotalXP"
 
 
 ## Variable 1 (PrimaryWeapon)
@@ -327,17 +327,6 @@ least 2 of the variables in the dataset.
 
 **New Question:** Is the primary weapon selected related to the number of eliminations? 
 
-```{r}
-# Visualization of PrimaryWeapons and Elimination count
-ggplot(data = COD_dataset, 
-       mapping = aes(x = reorder(PrimaryWeapon, Eliminations, median),
-                     y = Eliminations),
-                     group = PrimaryWeapon) + 
-  geom_boxplot(fill = "lightblue") +
-  geom_point(position = "jitter", color = "purple") + 
-  labs(x = "PrimaryWeapon", 
-       title = "Boxplots Comparing Eliminations to PrimaryWeapon") 
-```
 
 ```{r}
 # Visualization of PrimaryWeapons and Elimination count 
@@ -350,6 +339,7 @@ ggplot(data = COD_dataset,
   labs(x = "PrimaryWeapon", 
        title = "Boxplots Comparing Eliminations to PrimaryWeapon") 
 ```
+
 
 Notably, this first visualization contains three weapons which were selected less than 5 times--- the FFAR 1, the MG 82, and AK-47--- which make them outliers which might skew the conclusion regarding average Eliminations based on their medians having the same weight as weapons with a lot of data supporting the median (e.g., the Pelington 703). Therefore, let's create a second visualization discounting those. 
 
