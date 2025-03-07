@@ -193,7 +193,7 @@ ggplot(data = COD_PW_df,
 
 Based on this visualization, we can observe that Maps are chosen fall within a fairly dense range: the least-chosen map, Amerika, is selected 3 times while the most-prevalent maps--- Rush, Diesel, and Crossroads Strike--- are selected 15 times. There appears to be a roughly random distribution of frequencies of map selection between the min and max. 
 
-## Variable 4 (Eliminations) T
+## Variable 4 (Eliminations) 
 
 For the first variable, we selected the quantitative variable Score of
 the numeric type, which ranges in values from 0 to around 8000. There
@@ -229,7 +229,7 @@ Eliminations is slightly right skewed with mean Eliminations of 15 and a median
 of 14. The histogram does suggest a few matches in which the player
 performed at a high level. 
 
-## Variable 5 (TotalXP) T
+## Variable 5 (TotalXP) 
 
 For the first variable, we selected the quantitative variable Score of
 the numeric type, which ranges in values from 0 to around 8000. There
